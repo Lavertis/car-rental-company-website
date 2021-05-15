@@ -9,13 +9,16 @@
     <!-- Favicon-->
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#!">Wypożyczalnia Rentacar</a>
+        <span class="navbar-brand">Wypożyczalnia Rentacar</span>>
         <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                 class="navbar-toggler"
                 data-target="#navbarResponsive" data-toggle="collapse" type="button"><span
@@ -36,61 +39,111 @@
     </div>
 </nav>
 <!-- Page Content-->
-<div class="container">
-    <!-- Heading Row-->
-    <div class="row align-items-center my-5">
-        <div class="col-lg-7"><img alt="..." class="img-fluid rounded mb-4 mb-lg-0"
-                                   src="https://via.placeholder.com/900x400"/></div>
-        <div class="col-lg-5">
-            <h1 class="font-weight-light">Wypożyczalnia Rentacar</h1>
-            <p>Jesteśmy firmą specjalizującą się w wypożyczaniu samochodów osobowych. Mamy do zaoferowania szeroką
-                ofertę aut nowych i starych o zróżnicowanym cenniku. Każdy znajdzie coś dla siebie.
-            </p>
-            <a class="btn btn-primary" href="#!">Chcę wypożyczyć</a>
-        </div>
-    </div>
-    <!-- Call to Action-->
-    <div class="card text-white bg-secondary my-5 py-4 text-center">
-        <div class="card-body"><p class="text-white m-0">This call to action card is a great place to showcase some
-            important information or display a clever tagline!</p></div>
-    </div>
-    <!-- Content Row-->
-    <div class="row">
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card One</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
-                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+<div class="container my-auto">
+
+    <!--    https://mdbootstrap.com/docs/b4/jquery/forms/contact/-->
+    <!--Section: Contact v.2-->
+    <section class="mb-4">
+
+        <!--Section heading-->
+        <h2 class="h1-responsive font-weight-bold text-center my-4">Skontaktuj się z nami!</h2>
+        <!--Section description-->
+        <p class="text-center w-responsive mx-auto mb-5">
+            Chcesz się z nami skontaktować? Napisz do nas używając formularza poniżej:
+        </p>
+
+        <div class="row h-100">
+
+            <!--Grid column-->
+            <div class="col-md-9 mb-md-0 mb-5">
+                <form action="#!" id="contact-form" method="POST" name="contact-form">
+
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input class="form-control" id="name" name="name" type="text">
+                                <label class="" for="name">Twoje imię</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                        <!--Grid column-->
+                        <div class="col-md-6">
+                            <div class="md-form mb-0">
+                                <input class="form-control" id="email" name="email" type="text">
+                                <label class="" for="email">Twój adres e-mail</label>
+                            </div>
+                        </div>
+                        <!--Grid column-->
+
+                    </div>
+                    <!--Grid row-->
+
+                    <!--Grid row-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="md-form mb-0">
+                                <input class="form-control" id="subject" name="subject" type="text">
+                                <label class="" for="subject">Temat</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                    <!--Grid row-->
+                    <div class="row">
+
+                        <!--Grid column-->
+                        <div class="col-md-12">
+
+                            <div class="md-form">
+                                <textarea class="form-control md-textarea" id="message" name="message" rows="2"
+                                          type="text"></textarea>
+                                <label for="message">Wiadomość</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--Grid row-->
+
+                </form>
+
+                <div class="text-center text-md-left">
+                    <a class="btn btn-primary btn-lg"
+                       onclick="document.getElementById('contact-form').submit();">Wyślij</a>
                 </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                <div class="status"></div>
             </div>
-        </div>
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card Two</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus
-                        at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates
-                        quos eligendi labore.</p>
-                </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-3 text-center">
+                <ul class="list-unstyled mb-0">
+                    <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                        <p>Nadbystrzycka 38 D<br>20–618 Lublin<br>Polska</p>
+                    </li>
+
+                    <li><i class="fas fa-phone mt-4 fa-2x"></i>
+                        <p>+ 48 123 456 789</p>
+                    </li>
+
+                    <li><i class="fas fa-envelope mt-4 fa-2x"></i>
+                        <p>rafal.kuzmiczuk@pollub.edu.pl</p>
+                    </li>
+                </ul>
             </div>
+            <!--Grid column-->
+
         </div>
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">Card Three</h2>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex
-                        numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                </div>
-                <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
-            </div>
-        </div>
-    </div>
+
+    </section>
+    <!--Section: Contact v.2-->
 </div>
 <!-- Footer-->
-<footer class="py-5 bg-dark">
+<footer class="py-5 bg-dark mt-auto">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rafał Kuźmiczuk 2021</p></div>
 </footer>
 <!-- Bootstrap core JS-->
