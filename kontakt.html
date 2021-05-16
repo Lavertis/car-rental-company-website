@@ -10,10 +10,14 @@
     <link href="assets/favicon.ico" rel="icon" type="image/x-icon"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/bootstrap.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <!-- Bootstrap core JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Font Awesome -->
     <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
-    <!-- JS -->
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet"/>
+    <!-- Custom JS -->
     <script src="js/contact.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -72,8 +76,7 @@
                         <!--Grid column-->
                         <div class="col-md-6">
                             <div class="md-form mb-0">
-                                <input class="form-control" id="name" name="name" onchange="validateForm();"
-                                       type="text">
+                                <input class="form-control" id="name" name="name" type="text">
                                 <label class="" for="name">Twoje imię</label>
                             </div>
                         </div>
@@ -82,8 +85,7 @@
                         <!--Grid column-->
                         <div class="col-md-6">
                             <div class="md-form mb-0">
-                                <input class="form-control" id="email" name="email" onchange="validateForm();"
-                                       type="text">
+                                <input class="form-control" id="email" name="email" type="text">
                                 <label class="" for="email">Twój adres e-mail</label>
                             </div>
                         </div>
@@ -96,8 +98,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="md-form mb-0">
-                                <input class="form-control" id="subject" name="subject" onchange="validateForm();"
-                                       type="text">
+                                <input class="form-control" id="subject" name="subject" type="text">
                                 <label class="" for="subject">Temat</label>
                             </div>
                         </div>
@@ -112,7 +113,7 @@
 
                             <div class="md-form">
                                 <textarea class="form-control md-textarea" id="message" name="message" rows="2"
-                                          onchange="validateForm();" type="text"></textarea>
+                                          type="text"></textarea>
                                 <label for="message">Wiadomość</label>
                             </div>
 
@@ -167,8 +168,5 @@
 <footer class="py-3 bg-dark mt-auto">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rafał Kuźmiczuk 2021</p></div>
 </footer>
-<!-- Bootstrap core JS-->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
