@@ -40,8 +40,54 @@
 <div class="container">
     <!-- Heading Row-->
     <div class="row align-items-center my-5">
-        <div class="col-lg-7"><img alt="..." class="img-fluid rounded mb-4 mb-lg-0"
-                                   src="https://via.placeholder.com/900x400"/></div>
+        <div class="col-lg-7">
+
+            <!-- Carousel -->
+            <div class="carousel slide mx-auto" data-interval="7500" data-ride="carousel" id="photo-carousel"
+                 style="max-width: 600px">
+
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                    <li class="active" data-slide-to="0" data-target="#photo-carousel"></li>
+                    <li data-slide-to="1" data-target="#photo-carousel"></li>
+                    <li data-slide-to="2" data-target="#photo-carousel"></li>
+                </ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    <div class="carousel-item active text-center">
+                        <img alt="Poczuj wolność" height="400" src="image/image1.jpg">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Poczuj wolność!</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item text-center">
+                        <img alt="Z rodziną" height="400" src="image/image2.jpg">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Zabierz na wycieczkę całą rodzinę</h5>
+                        </div>
+                    </div>
+                    <div class="carousel-item text-center">
+                        <img alt="W trudnych warunkach" height="400" src="image/image3.jpg">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Także w trudnych warunkach</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" data-slide="prev" href="#photo-carousel">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" data-slide="next" href="#photo-carousel">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+            </div>
+            <!-- Carousel -->
+
+
+        </div>
         <div class="col-lg-5">
             <h1 class="font-weight-light">Wypożyczalnia Rentacar</h1>
             <p>Jesteśmy firmą specjalizującą się w wypożyczaniu samochodów osobowych. Mamy do zaoferowania szeroką
