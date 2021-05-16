@@ -1,6 +1,4 @@
 function validateForm() {
-    document.getElementById('form-status').setAttribute('style', 'color: red');
-
     const name = document.getElementById('name').value;
     if (name === "") {
         document.getElementById('form-status').innerHTML = "Pole z imieniem nie może być puste";
@@ -31,6 +29,21 @@ function validateForm() {
         return false;
     }
 
-    document.getElementById('form-status').innerHTML = "Wysłano";
-    document.getElementById('form-status').setAttribute('style', 'color: green');
+    document.getElementById('form-status').innerHTML = "";
+    return true;
+}
+
+function sendForm() {
+    const correct = validateForm();
+    if (!correct)
+        return false;
+
+    const send = window.confirm("Czy na pewno chcesz wysłać wiadomość?");
+    if (send) {
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value
+        window.location.href = `mailto:rafal.kuzmiczuk@pollub.edu.pl?subject=${subject}&body=${message}`;
+        return true
+    }
+    return false;
 }
