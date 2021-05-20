@@ -41,7 +41,7 @@ function sendForm() {
     const send = window.confirm("Czy na pewno chcesz wysłać wiadomość?");
     if (send) {
         const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value
+        const message = document.getElementById('message').value;
         window.location.href = `mailto:rafal.kuzmiczuk@pollub.edu.pl?subject=${subject}&body=${message}`;
         return true
     }
