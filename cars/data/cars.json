@@ -1,42 +1,72 @@
 {
   "bmw-7-series": {
     "name": "BMW Seria 7",
-    "photo-path": "BMW-7-Series-2019.jpg"
+    "photo-path": "BMW-7-Series-2019.jpg",
+    "description": "Luksusowa limuzyna w zasięgu Twojej ręki.",
+    "transmission": "AT",
+    "type": "Luksusowe"
   },
   "dacia-sandero": {
     "name": "Dacia Sandero",
-    "photo-path": "Dacia-Sandero-2021.jpg"
+    "photo-path": "Dacia-Sandero-2021.jpg",
+    "description": "Najtańszy samochód w naszej ofercie.",
+    "transmission": "MT",
+    "type": "Tanie"
   },
   "ford-focus": {
     "name": "Ford Focus",
-    "photo-path": "Ford-Focus-2019.jpg"
+    "photo-path": "Ford-Focus-2019.jpg",
+    "description": "Rodzinny samochód o sportowym wyglądzie.",
+    "transmission": "MT",
+    "type": "Rodzinne"
   },
   "honda-civic": {
     "name": "Honda Civic",
-    "photo-path": "Honda-Civic-2021.jpg"
+    "photo-path": "Honda-Civic-2021.jpg",
+    "description": "Ma wyjątkową osobowość i sportową duszę.",
+    "transmission": "MT",
+    "type": "Sportowe"
   },
   "hyundai-ioniq-5": {
     "name": "Hyundai IONIQ 5",
-    "photo-path": "Hyundai-IONIQ-5-2021.jpg"
+    "photo-path": "Hyundai-IONIQ-5-2021.jpg",
+    "description": "Podróżuj bezszelestnie, dbając o środowisko.",
+    "transmission": "AT",
+    "type": "Elektryczne"
   },
   "mini-cooper-s": {
     "name": "MINI Cooper S",
-    "photo-path": "MINI-Cooper-S-2021.jpg"
+    "photo-path": "MINI-Cooper-S-2021.jpg",
+    "description": "Zwinność i prowadzenie, z których słynie MINI.",
+    "transmission": "MT",
+    "type": "Sportowe"
   },
   "peugeot-108": {
     "name": "Peugeot 108",
-    "photo-path": "Peugeot-108-2016.jpg"
+    "photo-path": "Peugeot-108-2016.jpg",
+    "description": "Stworzony do parkowania w mieście.",
+    "transmission": "MT",
+    "type": "Małe"
   },
   "peugeot-308": {
     "name": "Peugeot 308",
-    "photo-path": "Peugeot-308-2021.jpg"
+    "photo-path": "Peugeot-308-2021.jpg",
+    "description": "Poczuj się jak w bolidzie sportowym.",
+    "transmission": "AT",
+    "type": "Sportowe"
   },
   "skoda-fabia": {
     "name": "Skoda Fabia",
-    "photo-path": "Skoda-Fabia-2021.jpg"
+    "photo-path": "Skoda-Fabia-2021.jpg",
+    "description": "Wygodne podróżowanie z całą rodziną.",
+    "transmission": "MT",
+    "type": "Rodzinne"
   },
   "volkswagen-polo": {
     "name": "Volkswagen Polo",
-    "photo-path": "Volkswagen-Polo-2021.jpg"
+    "photo-path": "Volkswagen-Polo-2021.jpg",
+    "description": "Wygodne podróżowanie z całą rodziną.",
+    "transmission": "AT",
+    "type": "Rodzinne"
   }
 }
