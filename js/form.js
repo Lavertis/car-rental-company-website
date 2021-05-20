@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $("#car-photo").hide();
+
     let cars = null;
     $.ajax({
         'async': false,
@@ -14,6 +16,6 @@ $(document).ready(function () {
         const selectedCar = $("#car-model").val();
         const photoPath = cars[selectedCar]["photo-path"];
         const finalPath = `cars/images/small/${photoPath}`;
-        $("#car-photo").prop('src', finalPath);
+        $("#car-photo").show().prop('src', finalPath);
     })
 });
