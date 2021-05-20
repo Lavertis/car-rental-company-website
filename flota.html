@@ -15,19 +15,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet"/>
+    <!-- Custom JS -->
+    <script src="js/fleet.js"></script>
     <!-- baguetteBox -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css" rel="stylesheet"/>
-    <style>
-        body {
-            background: #f4f4f4;
-        }
-
-        .banner {
-            background: #a770ef;
-            background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
-            background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
-        }
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- Navigation-->
@@ -61,13 +53,11 @@
 </nav>
 <!-- Page Content-->
 <div class="container">
-
     <!-- https://bootstrapious.com/p/bootstrap-photo-gallery -->
     <!-- Photo gallery -->
     <div class="container-fluid">
         <div class="px-lg-5">
-
-            <!-- For demo purpose -->
+            <!-- Baner -->
             <div class="row py-5">
                 <div class="col-lg-12 mx-auto">
                     <div class="text-white p-5 shadow-sm rounded banner">
@@ -77,255 +67,14 @@
                 </div>
             </div>
             <!-- End -->
-
-            <div class="row cars-gallery">
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/BMW-7-Series-2019.jpg">
-                            <img alt="BMW 7 Series 2019" class="img-fluid card-img-top"
-                                 src="cars/images/small/BMW-7-Series-2019.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">BMW Seria 7</a></h5>
-                            <p class="small text-muted mb-0">Luksusowa limuzyna w zasięgu Twojej ręki.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">AT</span>
-                                </p>
-                                <div class="badge badge-dark px-3 rounded-pill font-weight-normal">Luksusowe</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Dacia-Sandero-2021.jpg">
-                            <img alt="Dacia Sandero 2021" class="img-fluid card-img-top"
-                                 src="cars/images/small/Dacia-Sandero-2021.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Dacia Sandero</a></h5>
-                            <p class="small text-muted mb-0">Najtańszy samochód w naszej ofercie.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">MT</span>
-                                </p>
-                                <div class="badge badge-primary px-3 rounded-pill font-weight-normal">Tanie</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Ford-Focus-2019.jpg">
-                            <img alt="Ford Focus 2019" class="img-fluid card-img-top"
-                                 src="cars/images/small/Ford-Focus-2019.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Ford Focus</a></h5>
-                            <p class="small text-muted mb-0">Rodzinny samochód o sportowym wyglądzie.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">MT</span>
-                                </p>
-                                <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">
-                                    Rodzinne
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Honda-Civic-2021.jpg">
-                            <img alt="Honda Civic 2021" class="img-fluid card-img-top"
-                                 src="cars/images/small/Honda-Civic-2021.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Honda Civic</a></h5>
-                            <p class="small text-muted mb-0">Ma wyjątkową osobowość i sportową duszę.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">MT</span>
-                                </p>
-                                <div class="badge badge-danger px-3 rounded-pill font-weight-normal">Sportowe</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Hyundai-IONIQ-5-2021.jpg">
-                            <img alt="Hyundai IONIQ 5 2021" class="img-fluid card-img-top"
-                                 src="cars/images/small/Hyundai-IONIQ-5-2021.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Hyundai IONIQ 5</a></h5>
-                            <p class="small text-muted mb-0">Podróżuj bezszelestnie, dbając o środowisko.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">AT</span>
-                                </p>
-                                <div class="badge badge-success px-3 rounded-pill font-weight-normal">Elektryczne</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/MINI-Cooper-S-2021.jpg">
-                            <img alt="MINI Cooper S 2021" class="img-fluid card-img-top"
-                                 src="cars/images/small/MINI-Cooper-S-2021.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">MINI Cooper S</a></h5>
-                            <p class="small text-muted mb-0">Zwinność i prowadzenie, z których słynie MINI.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">MT</span>
-                                </p>
-                                <div class="badge badge-danger px-3 rounded-pill font-weight-normal text-white">
-                                    Sportowe
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Peugeot-108-2016.jpg">
-                            <img alt="Peugeot 108 2016" class="img-fluid card-img-top"
-                                 src="cars/images/small/Peugeot-108-2016.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Peugeot 108</a></h5>
-                            <p class="small text-muted mb-0">Stworzony do parkowania w mieście.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">MT</span>
-                                </p>
-                                <div class="badge badge-info px-3 rounded-pill font-weight-normal">Małe</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Peugeot-308-2021.jpg">
-                            <img alt="Peugeot 308 2021" class="img-fluid card-img-top"
-                                 src="cars/images/small/Peugeot-308-2021.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Peugeot 308</a></h5>
-                            <p class="small text-muted mb-0">Poczuj się jak w bolidzie sportowym.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">AT</span>
-                                </p>
-                                <div class="badge badge-danger px-3 rounded-pill font-weight-normal text-white">
-                                    Sportowe
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Skoda-Fabia-2021.jpg">
-                            <img alt="Skoda Fabia 2021" class="img-fluid card-img-top"
-                                 src="cars/images/small/Skoda-Fabia-2021.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Skoda Fabia</a></h5>
-                            <p class="small text-muted mb-0">Wygodne podróżowanie z całą rodziną.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">MT</span>
-                                </p>
-                                <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">
-                                    Rodzinne
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-                <!-- Gallery item -->
-                <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
-                    <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/Volkswagen-Polo-2021.jpg">
-                            <img alt="Volkswagen Polo 2021" class="img-fluid card-img-top"
-                                 src="cars/images/small/Volkswagen-Polo-2021.jpg">
-                        </a>
-                        <div class="p-4">
-                            <h5><a class="text-dark" href="#!">Volkswagen Polo</a></h5>
-                            <p class="small text-muted mb-0">Wygodne podróżowanie z całą rodziną.</p>
-                            <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                <p class="small mb-0">
-                                    <i class="fa fa-picture-o mr-2"></i>
-                                    <span class="font-weight-bold">AT</span>
-                                </p>
-                                <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">
-                                    Rodzinne
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End -->
-
-            </div>
-            <!--            <div class="py-5 text-right"><a href="#!" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a></div>-->
+            <div class="row cars-gallery" id="gallery"></div>
         </div>
     </div>
     <!-- Photo gallery -->
-
 </div>
 <!-- Footer-->
 <footer class="py-3 bg-dark mt-auto">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rafał Kuźmiczuk 2021</p></div>
 </footer>
-<!-- baguetteBox -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.js"></script>
-<script>
-    baguetteBox.run('.cars-gallery', {
-        noScrollbars: true,
-    });
-</script>
 </body>
 </html>
