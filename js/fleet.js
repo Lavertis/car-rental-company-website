@@ -36,7 +36,7 @@ function createCarGallery() {
         data += `\n<!-- Gallery item -->
                 <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
                     <div class="bg-white rounded shadow-sm">
-                        <a class="lightbox" href="cars/images/medium/${photoPath}">
+                        <a class="lightbox" href="cars/images/medium/${photoPath}" data-caption="<div class='caption-text'>${name}</div>">
                             <img alt="${name}" class="img-fluid card-img-top"
                                  src="cars/images/small/${photoPath}">
                         </a>
