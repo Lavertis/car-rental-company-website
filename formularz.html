@@ -15,6 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet"/>
+    <!-- Custom JS -->
+    <script src="js/form.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- Navigation-->
@@ -42,7 +44,74 @@
     </div>
 </nav>
 <!-- Page Content-->
-<div class="container">
+<div class="container my-auto">
+
+    <h1 class="mb-4">Wypożycz samochód</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td><label for="car-model">Samochód</label></td>
+                        <td>
+                            <select id="car-model">
+                                <option disabled selected value>-</option>
+                                <option value="bmw-7-series">BMW Seria 7</option>
+                                <option value="dacia-sandero">Dacia Sandero</option>
+                                <option value="ford-focus">Ford Focus</option>
+                                <option value="honda-civic">Honda Civic</option>
+                                <option value="hyundai-ioniq-5">Hyundai IONIQ 5</option>
+                                <option value="mini-cooper-s">MINI Cooper S</option>
+                                <option value="peugeot-108">Peugeot 108</option>
+                                <option value="peugeot-308">Peugeot 308</option>
+                                <option value="skoda-fabia">Skoda Fabia</option>
+                                <option value="volkswagen-polo">Volkswagen Polo</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Dodatkowe ubezpieczenie</label></td>
+                        <td>
+                            <input id="tyres-insurance" type="checkbox">
+                            <label class="ml-1" for="tyres-insurance">Opony</label><br>
+                            <input id="windows-insurance" type="checkbox">
+                            <label class="ml-1" for="windows-insurance">Okna</label><br>
+                            <input id="theft-insurance" type="checkbox">
+                            <label class="ml-1" for="theft-insurance">Kradzież pojazdu</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Odbiór pojazdu</td>
+                        <td>
+                            <input id="parking-pickup" name="pickup-type" type="radio">
+                            <label for="parking-pickup">Z głównego parkingu</label><br>
+                            <input id="address-delivery-pickup" name="pickup-type" type="radio">
+                            <label for="address-delivery-pickup">Dostawa pod adres</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="client-name">Imię</label></td>
+                        <td><input id="client-name" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="client-surname">Nazwisko</label></td>
+                        <td><input id="client-surname" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="client-phone">Numer telefonu</label></td>
+                        <td><input id="client-phone" type="text"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+        <div class="col-md-5">
+            <img alt="selected car" class="car-photo-form" id="car-photo" src="">
+        </div>
+        <button class="btn btn-primary mx-auto my-4" type="button">Wypożycz</button>
+    </div>
 
 </div>
 <!-- Footer-->
