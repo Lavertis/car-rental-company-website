@@ -1,0 +1,42 @@
+{
+  "bmw-7-series": {
+    "name": "BMW Seria 7",
+    "photo-path": "BMW-7-Series-2019.jpg"
+  },
+  "dacia-sandero": {
+    "name": "Dacia Sandero",
+    "photo-path": "Dacia-Sandero-2021.jpg"
+  },
+  "ford-focus": {
+    "name": "Ford Focus",
+    "photo-path": "Ford-Focus-2019.jpg"
+  },
+  "honda-civic": {
+    "name": "Honda Civic",
+    "photo-path": "Honda-Civic-2021.jpg"
+  },
+  "hyundai-ioniq-5": {
+    "name": "Hyundai IONIQ 5",
+    "photo-path": "Hyundai-IONIQ-5-2021.jpg"
+  },
+  "mini-cooper-s": {
+    "name": "MINI Cooper S",
+    "photo-path": "MINI-Cooper-S-2021.jpg"
+  },
+  "peugeot-108": {
+    "name": "Peugeot 108",
+    "photo-path": "Peugeot-108-2016.jpg"
+  },
+  "peugeot-308": {
+    "name": "Peugeot 308",
+    "photo-path": "Peugeot-308-2021.jpg"
+  },
+  "skoda-fabia": {
+    "name": "Skoda Fabia",
+    "photo-path": "Skoda-Fabia-2021.jpg"
+  },
+  "volkswagen-polo": {
+    "name": "Volkswagen Polo",
+    "photo-path": "Volkswagen-Polo-2021.jpg"
+  }
+}
