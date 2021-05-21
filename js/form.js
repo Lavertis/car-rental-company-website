@@ -8,22 +8,14 @@ $(document).ready(function () {
         })
         .then((json) => {
             cars = json;
+            setSelectedCarFromUrlParam(cars);
         })
         .catch((error) => console.log(error));
 
     initializeLocalStorage();
-    setMinDateInDatepicker();
+    initializeDataPickers();
 
-    const carFromUrl = getCarFromUrl();
-    const carModelSelect = $("#car-model");
-
-    if (carFromUrl) {
-        carModelSelect.val(carFromUrl);
-        showSelectedCarPhoto(cars);
-        showCarPrice(cars);
-    }
-
-    carModelSelect.change(function () {
+    $("#car-model").change(function () {
         showSelectedCarPhoto(cars);
         showCarPrice(cars);
     })
@@ -36,10 +28,20 @@ function initializeLocalStorage() {
         localStorage.setItem("rentedCars", JSON.stringify([]));
 }
 
-function setMinDateInDatepicker() {
+function initializeDataPickers() {
     const minDate = getTodayDateAsStr(1);
     $("#date-start").prop("min", minDate);
     $("#date-end").prop("min", minDate);
+}
+
+function setSelectedCarFromUrlParam(cars) {
+    const carFromUrl = getCarFromUrl();
+    const carModelSelect = $("#car-model");
+    if (carFromUrl) {
+        carModelSelect.val(carFromUrl);
+        showSelectedCarPhoto(cars);
+        showCarPrice(cars);
+    }
 }
 
 function saveRentToLocalStorage() {
@@ -88,6 +90,7 @@ function isAnyRadioChecked(radioGroupName) {
 }
 
 function isFormValid() {
+    $("form-status").html("&nbsp");
     if (!isCarSelected()) return false;
     if (!isPickupTypeSelected()) return false;
     if (!isDateCorrect()) return false;
@@ -99,7 +102,7 @@ function isFormValid() {
 function isCarSelected() {
     const carKey = $("#car-model").val();
     if (carKey === null) {
-        $("#form-status").html("Nie wybrano modelu samochodu")
+        $("#form-status").html("Wybierz samochód");
         return false;
     }
     return true;
@@ -119,10 +122,10 @@ function isDateCorrect() {
     const endDate = $("#date-end").val();
 
     if (startDate === "") {
-        $("#form-status").html("Wybierz datę rozpoczęcia wynajmu")
+        $("#form-status").html("Wybierz datę rozpoczęcia wynajmu");
         return false;
     } else if (Date.parse(startDate) <= Date.parse(today)) {
-        $("#form-status").html("Możesz rozpocząć wynajem dopiero od jutra")
+        $("#form-status").html("Możesz rozpocząć wynajem dopiero od jutra");
         return false;
     }
 
@@ -130,7 +133,7 @@ function isDateCorrect() {
         $("#form-status").html("Wybierz datę zakończenia wynajmu")
         return false;
     } else if (Date.parse(endDate) < Date.parse(startDate)) {
-        $("#form-status").html("Data zakończenia wynajmu nie może być przed datą rozpoczęcia")
+        $("#form-status").html("Data zakończenia wynajmu nie może być przed datą rozpoczęcia");
         return false;
     }
     return true;
@@ -138,11 +141,12 @@ function isDateCorrect() {
 
 function isNameCorrect() {
     const name = $("#name").val();
+    const regex = new RegExp("\\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+");
     if (name === "") {
-        $("#form-status").html("Pole z imieniem nie może być puste")
+        $("#form-status").html("Pole z imieniem nie może być puste");
         return false;
-    } else if (name === "regexhere") {
-
+    } else if (!regex.test(name)) {
+        $("#form-status").html("Wprowadzone imię jest niepoprawne");
         return false;
     }
     return true;
@@ -150,11 +154,12 @@ function isNameCorrect() {
 
 function isSurnameCorrect() {
     const surname = $("#surname").val();
+    const regex = new RegExp("^[A-ZŁŚ][a-ząęółśżźćń]{1,20}(-[A-ZŁŚ][a-ząęółśżźćń]{1,20}){0,2}$");
     if (surname === "") {
-        $("#form-status").html("Pole z nazwiskiem nie może być puste")
+        $("#form-status").html("Pole z nazwiskiem nie może być puste");
         return false;
-    } else if (surname === "regexhere") {
-
+    } else if (!regex.test(surname)) {
+        $("#form-status").html("Wprowadzone nazwisko jest niepoprawne");
         return false;
     }
     return true;
@@ -163,11 +168,12 @@ function isSurnameCorrect() {
 
 function isPhoneCorrect() {
     const phone = $("#phone").val();
+    const regex = new RegExp("^[1-9][0-9]{8}$");
     if (phone === "") {
-        $("#form-status").html("Pole z telefonem nie może być puste")
+        $("#form-status").html("Pole z telefonem nie może być puste");
         return false;
-    } else if (phone === "regexhere") {
-
+    } else if (!regex.test(phone)) {
+        $("#form-status").html("Wprowadzony numer telefonu jest niepoprawny");
         return false;
     }
     return true;
