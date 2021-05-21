@@ -37,7 +37,7 @@ function initializeLocalStorage() {
 
 function saveRentToLocalStorage() {
     let rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
-    
+
     if (!isFormValid()) {
         alert("Form not valid");
     }
@@ -46,7 +46,7 @@ function saveRentToLocalStorage() {
     let insurance = [];
     getCheckboxesChecked("insurance").forEach(el => insurance.push(el.val()));
     rent.carKey = $("#car-model").val();
-    rent.insurance = [];
+    rent.insurance = insurance;
     rent.pickup = getRadioChecked("pickup-type").val();
     rent.startDate = $("#date-start").val();
     rent.endDate = $("#date-end").val();
