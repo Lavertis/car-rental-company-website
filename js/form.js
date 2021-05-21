@@ -19,7 +19,8 @@ $(document).ready(function () {
     }
 
     carModelSelect.change(function () {
-        showSelectedCarPhoto(cars)
+        showSelectedCarPhoto(cars);
+        showCarPrice(cars);
     })
 });
 
@@ -28,6 +29,12 @@ function showSelectedCarPhoto(cars) {
     const photoPath = cars[selectedCar]["photo-path"];
     const finalPath = `cars/images/small/${photoPath}`;
     $("#car-photo").removeAttr("hidden").prop('src', finalPath);
+}
+
+function showCarPrice(cars) {
+    const selectedCar = $("#car-model").val();
+    const price = cars[selectedCar]["price"];
+    $("#price").html(`${price} PLN`);
 }
 
 function getCarFromUrl() {
