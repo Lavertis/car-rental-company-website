@@ -1,14 +1,15 @@
 $(document).ready(function () {
     let cars = null;
-    $.ajax({
-        'async': false,
-        'global': false,
-        'url': "cars/data/cars.json",
-        'dataType': "json",
-        'success': function (data) {
-            cars = data;
-        }
-    });
+    fetch("http://localhost:63342/pai-project/cars/data/cars.json")
+        .then(response => {
+            if (response.status !== 200)
+                return Promise.reject('Request failed');
+            return response.json();
+        })
+        .then((json) => {
+            cars = json;
+        })
+        .catch((error) => console.log(error));
 
     const carFromUrl = getCarFromUrl();
     const carModelSelect = $("#car-model");

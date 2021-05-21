@@ -1,11 +1,24 @@
 $(document).ready(function () {
-    createCarGallery();
-    baguetteBox.run('.cars-gallery', {
-        noScrollbars: true,
-    });
+    fetchCarsFromFile();
 });
 
-function createCarGallery() {
+function fetchCarsFromFile() {
+    fetch("http://localhost:63342/pai-project/cars/data/cars.json")
+        .then(response => {
+            if (response.status !== 200)
+                return Promise.reject('Request failed');
+            return response.json();
+        })
+        .then((data) => {
+            createCarGallery(data)
+            baguetteBox.run('.cars-gallery', {
+                noScrollbars: true,
+            });
+        })
+        .catch((error) => console.log(error));
+}
+
+function createCarGallery(cars) {
     let typeColorMap = new Map();
     typeColorMap.set("Luksusowe", "badge-dark");
     typeColorMap.set("Tanie", "badge-primary");
@@ -13,17 +26,6 @@ function createCarGallery() {
     typeColorMap.set("Sportowe", "badge-danger");
     typeColorMap.set("Elektryczne", "badge-success");
     typeColorMap.set("Małe", "badge-info");
-
-    let cars = null;
-    $.ajax({
-        'async': false,
-        'global': false,
-        'url': "cars/data/cars.json",
-        'dataType': "json",
-        'success': function (data) {
-            cars = data;
-        }
-    });
 
     let data = "";
     for (const key of Object.keys(cars)) {
