@@ -16,6 +16,7 @@ $(document).ready(function () {
     if (carFromUrl) {
         carModelSelect.val(carFromUrl);
         showSelectedCarPhoto(cars);
+        showCarPrice(cars);
     }
 
     carModelSelect.change(function () {
