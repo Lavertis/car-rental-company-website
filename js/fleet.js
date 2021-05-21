@@ -26,7 +26,7 @@ function createCarGallery() {
     });
 
     let data = "";
-    for (const key in cars) {
+    for (const key of Object.keys(cars)) {
         const photoPath = cars[key]["photo-path"];
         const name = cars[key]["name"];
         const description = cars[key]["description"];
