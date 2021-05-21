@@ -12,6 +12,11 @@ body {
     border: 1px solid black;
 }
 
+.extra-fee {
+    font-size: 85%;
+    color: green;
+}
+
 .form-status {
     color: red;
 }

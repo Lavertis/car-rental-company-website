@@ -29,6 +29,10 @@ function initializeDataPickers() {
 }
 
 function addCallbacks(cars) {
+    $("input, select").change(function () {
+        clearFormStatus();
+    })
+
     $("#car-model").change(function () {
         showSelectedCarPhoto(cars);
         showCarPrice(cars);
@@ -52,13 +56,25 @@ function addCallbacks(cars) {
 }
 
 function getFinalPrice(cars) {
+    const extraFeeMap = new Map();
+    extraFeeMap.set("address-delivery-pickup", 20);
+    extraFeeMap.set("self-pickup", 0);
+    extraFeeMap.set("tyres-insurance", 5);
+    extraFeeMap.set("windows-insurance", 5);
+    extraFeeMap.set("theft-insurance", 10);
+    let extraFees = 0;
+    $(`[name='insurance']`).each(function () {
+        if (this.checked) extraFees += extraFeeMap.get($(this).val());
+    })
+    const pickupType = getRadioChecked("pickup-type");
+    extraFees += extraFeeMap.get(pickupType.val());
     const selectedCar = $("#car-model").val();
     const carDailyPrice = cars[selectedCar]["price"];
     const startDate = new Date($("#date-start").val());
     const endDate = new Date($("#date-end").val());
     const differenceInTime = endDate.getTime() - startDate.getTime();
     const differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24)) + 1;
-    return differenceInDays * carDailyPrice;
+    return differenceInDays * carDailyPrice + extraFees;
 }
 
 function setSelectedCarFromUrlParam(cars) {
@@ -113,8 +129,12 @@ function isAnyRadioChecked(radioGroupName) {
     return checked;
 }
 
-function isFormValid() {
+function clearFormStatus() {
     $("#form-status").html("&nbsp");
+}
+
+function isFormValid() {
+    clearFormStatus();
     if (!isCarSelected()) return false;
     if (!isPickupTypeSelected()) return false;
     if (!isDateCorrect()) return false;
