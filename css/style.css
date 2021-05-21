@@ -12,6 +12,10 @@ body {
     border: 1px solid black;
 }
 
+.caption-text {
+    font-size: 150%;
+}
+
 .extra-fee {
     font-size: 85%;
     color: green;
