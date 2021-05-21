@@ -12,6 +12,7 @@ $(document).ready(function () {
         .catch((error) => console.log(error));
 
     initializeLocalStorage();
+    setMinDateInDatepicker();
 
     const carFromUrl = getCarFromUrl();
     const carModelSelect = $("#car-model");
@@ -35,13 +36,17 @@ function initializeLocalStorage() {
         localStorage.setItem("rentedCars", JSON.stringify([]));
 }
 
+function setMinDateInDatepicker() {
+    const minDate = getTodayDateAsStr(1);
+    $("#date-start").prop("min", minDate);
+    $("#date-end").prop("min", minDate);
+}
+
 function saveRentToLocalStorage() {
+    if (!isFormValid())
+        return false;
+
     let rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
-
-    if (!isFormValid()) {
-        alert("Form not valid");
-    }
-
     let rent = {};
     let insurance = [];
     getCheckboxesChecked("insurance").forEach(el => insurance.push(el.val()));
@@ -83,7 +88,98 @@ function isAnyRadioChecked(radioGroupName) {
 }
 
 function isFormValid() {
+    if (!isCarSelected()) return false;
+    if (!isPickupTypeSelected()) return false;
+    if (!isDateCorrect()) return false;
+    if (!isNameCorrect()) return false;
+    if (!isSurnameCorrect()) return false;
+    return isPhoneCorrect();
+}
+
+function isCarSelected() {
+    const carKey = $("#car-model").val();
+    if (carKey === null) {
+        $("#form-status").html("Nie wybrano modelu samochodu")
+        return false;
+    }
     return true;
+}
+
+function isPickupTypeSelected() {
+    if (!isAnyRadioChecked("pickup-type")) {
+        $("#form-status").html("Wybierz sposób odbioru pojazdu")
+        return false;
+    }
+    return true;
+}
+
+function isDateCorrect() {
+    const today = getTodayDateAsStr();
+    const startDate = $("#date-start").val();
+    const endDate = $("#date-end").val();
+
+    if (startDate === "") {
+        $("#form-status").html("Wybierz datę rozpoczęcia wynajmu")
+        return false;
+    } else if (Date.parse(startDate) <= Date.parse(today)) {
+        $("#form-status").html("Możesz rozpocząć wynajem dopiero od jutra")
+        return false;
+    }
+
+    if (endDate === "") {
+        $("#form-status").html("Wybierz datę zakończenia wynajmu")
+        return false;
+    } else if (Date.parse(endDate) < Date.parse(startDate)) {
+        $("#form-status").html("Data zakończenia wynajmu nie może być przed datą rozpoczęcia")
+        return false;
+    }
+    return true;
+}
+
+function isNameCorrect() {
+    const name = $("#name").val();
+    if (name === "") {
+        $("#form-status").html("Pole z imieniem nie może być puste")
+        return false;
+    } else if (name === "regexhere") {
+
+        return false;
+    }
+    return true;
+}
+
+function isSurnameCorrect() {
+    const surname = $("#surname").val();
+    if (surname === "") {
+        $("#form-status").html("Pole z nazwiskiem nie może być puste")
+        return false;
+    } else if (surname === "regexhere") {
+
+        return false;
+    }
+    return true;
+}
+
+
+function isPhoneCorrect() {
+    const phone = $("#phone").val();
+    if (phone === "") {
+        $("#form-status").html("Pole z telefonem nie może być puste")
+        return false;
+    } else if (phone === "regexhere") {
+
+        return false;
+    }
+    return true;
+}
+
+function getTodayDateAsStr(addDays = 0) {
+    const today = new Date();
+    today.setDate(today.getDate() + addDays);
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    return yyyy + '-' + mm + '-' + dd
 }
 
 function showSelectedCarPhoto(cars) {
