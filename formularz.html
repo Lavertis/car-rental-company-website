@@ -77,20 +77,20 @@
                     <tr>
                         <td><label>Dodatkowe ubezpieczenie</label></td>
                         <td>
-                            <input id="tyres-insurance" type="checkbox">
+                            <input id="tyres-insurance" name="insurance" type="checkbox" value="tyres">
                             <label class="ml-1" for="tyres-insurance">Opony</label><br>
-                            <input id="windows-insurance" type="checkbox">
+                            <input id="windows-insurance" name="insurance" type="checkbox" value="windows">
                             <label class="ml-1" for="windows-insurance">Okna</label><br>
-                            <input id="theft-insurance" type="checkbox">
+                            <input id="theft-insurance" name="insurance" type="checkbox" value="theft">
                             <label class="ml-1" for="theft-insurance">Kradzież pojazdu</label>
                         </td>
                     </tr>
                     <tr>
                         <td>Odbiór pojazdu</td>
                         <td>
-                            <input id="self-pickup" name="pickup-type" type="radio">
+                            <input id="self-pickup" name="pickup-type" type="radio" value="self">
                             <label for="self-pickup">Osobisty</label><br>
-                            <input id="address-delivery-pickup" name="pickup-type" type="radio">
+                            <input id="address-delivery-pickup" name="pickup-type" type="radio" value="delivery">
                             <label for="address-delivery-pickup">Dostawa pod adres</label>
                         </td>
                     </tr>
@@ -103,16 +103,16 @@
                         <td><input class="datepicker" id="date-end" type="date"></td>
                     </tr>
                     <tr>
-                        <td><label for="client-name">Imię</label></td>
-                        <td><input id="client-name" type="text"></td>
+                        <td><label for="name">Imię</label></td>
+                        <td><input id="name" type="text"></td>
                     </tr>
                     <tr>
-                        <td><label for="client-surname">Nazwisko</label></td>
-                        <td><input id="client-surname" type="text"></td>
+                        <td><label for="surname">Nazwisko</label></td>
+                        <td><input id="surname" type="text"></td>
                     </tr>
                     <tr>
-                        <td><label for="client-phone">Numer telefonu</label></td>
-                        <td><input id="client-phone" type="text"></td>
+                        <td><label for="phone">Numer telefonu</label></td>
+                        <td><input id="phone" type="text"></td>
                     </tr>
                     </tbody>
                 </table>
@@ -122,7 +122,7 @@
         <div class="col-md-6">
             <img alt="selected car" class="img-fluid car-photo-form" hidden id="car-photo" src="">
         </div>
-        <button class="btn btn-primary mx-auto mt-4 mb-5" type="button">Wypożycz</button>
+        <button class="btn btn-primary mx-auto mt-4 mb-5" id="rentBtn" type="button">Wypożycz</button>
     </div>
 
 </div>
