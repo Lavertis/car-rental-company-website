@@ -1,22 +1,12 @@
-$(document).ready(function () {
-    fetchCarsFromFile();
-});
+import {fetchCarsData} from './data.js';
 
-function fetchCarsFromFile() {
-    fetch("http://localhost:63342/pai-project/cars/data/cars.json")
-        .then(response => {
-            if (response.status !== 200)
-                return Promise.reject('Request failed');
-            return response.json();
-        })
-        .then((data) => {
-            createCarGallery(data)
-            baguetteBox.run('.cars-gallery', {
-                noScrollbars: true,
-            });
-        })
-        .catch((error) => console.log(error));
-}
+$(document).ready(async function () {
+    const cars = await fetchCarsData();
+    createCarGallery(cars);
+    baguetteBox.run('.cars-gallery', {
+        noScrollbars: true,
+    });
+});
 
 function createCarGallery(cars) {
     let typeColorMap = new Map();
