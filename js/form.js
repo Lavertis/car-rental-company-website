@@ -9,11 +9,7 @@ $(document).ready(function () {
         .then((json) => {
             cars = json;
             setSelectedCarFromUrlParam(cars);
-            addOnClickCallbacks(cars);
-            $("#car-model").change(function () {
-                showSelectedCarPhoto(cars);
-                showCarPrice(cars);
-            })
+            addCallbacks(cars);
         })
         .catch((error) => console.log(error));
 
@@ -32,7 +28,16 @@ function initializeDataPickers() {
     $("#date-end").prop("min", minDate);
 }
 
-function addOnClickCallbacks(cars) {
+function addCallbacks(cars) {
+    $("#car-model").change(function () {
+        showSelectedCarPhoto(cars);
+        showCarPrice(cars);
+    });
+
+    $("#date-start").change(function () {
+        $("#date-end").prop("min", $(this).val());
+    });
+
     $("#rentBtn").click(function () {
         if (!isFormValid())
             return false;
