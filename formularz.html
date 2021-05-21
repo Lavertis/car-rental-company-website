@@ -125,8 +125,34 @@
             <img alt="selected car" class="img-fluid car-photo-form" hidden id="car-photo" src="">
         </div>
         <span class="form-status mt-3 w-100 text-center" id="form-status">&nbsp</span>
-        <button class="btn btn-primary mx-auto mt-3 mb-5" id="rentBtn" type="button">Wypożycz</button>
+        <button class="btn btn-primary mx-auto mt-3 mb-5" data-target="#confirmationModal" data-toggle="modal"
+                id="rentBtn"
+                type="button">Wypożycz
+        </button>
     </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="confirmationModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Potwierdzenie</h4>
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body" id="modal-body"></div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-dismiss="modal" id="cancelBtn" type="button">Anuluj</button>
+                    <button class="btn btn-success" data-dismiss="modal" id="confirmBtn" type="button">Potwierdź
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
 
 </div>
 <!-- Footer-->
