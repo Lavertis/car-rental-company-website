@@ -9,18 +9,16 @@ $(document).ready(function () {
         .then((json) => {
             cars = json;
             setSelectedCarFromUrlParam(cars);
+            addOnClickCallbacks(cars);
+            $("#car-model").change(function () {
+                showSelectedCarPhoto(cars);
+                showCarPrice(cars);
+            })
         })
         .catch((error) => console.log(error));
 
     initializeLocalStorage();
     initializeDataPickers();
-
-    $("#car-model").change(function () {
-        showSelectedCarPhoto(cars);
-        showCarPrice(cars);
-    })
-
-    $("#rentBtn").click(saveRentToLocalStorage);
 });
 
 function initializeLocalStorage() {
@@ -34,6 +32,30 @@ function initializeDataPickers() {
     $("#date-end").prop("min", minDate);
 }
 
+function addOnClickCallbacks(cars) {
+    $("#rentBtn").click(function () {
+        if (!isFormValid())
+            return false;
+        const finalPrice = getFinalPrice(cars);
+        $("#modal-body").html(`Do zapłaty: ${finalPrice} PLN`);
+        $('#confirmationModal').modal('show');
+    });
+
+    $("#confirmBtn").click(function () {
+        saveRentToLocalStorage();
+    });
+}
+
+function getFinalPrice(cars) {
+    const selectedCar = $("#car-model").val();
+    const carDailyPrice = cars[selectedCar]["price"];
+    const startDate = new Date($("#date-start").val());
+    const endDate = new Date($("#date-end").val());
+    const differenceInTime = endDate.getTime() - startDate.getTime();
+    const differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24)) + 1;
+    return differenceInDays * carDailyPrice;
+}
+
 function setSelectedCarFromUrlParam(cars) {
     const carFromUrl = getCarFromUrl();
     const carModelSelect = $("#car-model");
@@ -45,9 +67,6 @@ function setSelectedCarFromUrlParam(cars) {
 }
 
 function saveRentToLocalStorage() {
-    if (!isFormValid())
-        return false;
-
     let rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
     let rent = {};
     let insurance = [];
@@ -90,7 +109,7 @@ function isAnyRadioChecked(radioGroupName) {
 }
 
 function isFormValid() {
-    $("form-status").html("&nbsp");
+    $("#form-status").html("&nbsp");
     if (!isCarSelected()) return false;
     if (!isPickupTypeSelected()) return false;
     if (!isDateCorrect()) return false;
