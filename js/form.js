@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("#car-photo").hide();
+    const carModelSelect = $("#car-model");
 
     let cars = null;
     $.ajax({
@@ -12,10 +13,27 @@ $(document).ready(function () {
         }
     });
 
-    $("#car-model").change(function () {
-        const selectedCar = $("#car-model").val();
-        const photoPath = cars[selectedCar]["photo-path"];
-        const finalPath = `cars/images/small/${photoPath}`;
-        $("#car-photo").show().prop('src', finalPath);
+    const carFromUrl = getSelectedCarFromUrl();
+
+    if (carFromUrl) {
+        carModelSelect.val(carFromUrl);
+        showSelectedCarPhoto(cars);
+    }
+
+    carModelSelect.change(function () {
+        showSelectedCarPhoto(cars)
     })
 });
+
+function showSelectedCarPhoto(cars) {
+    const selectedCar = $("#car-model").val();
+    const photoPath = cars[selectedCar]["photo-path"];
+    const finalPath = `cars/images/small/${photoPath}`;
+    $("#car-photo").show().prop('src', finalPath);
+}
+
+function getSelectedCarFromUrl() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get('car');
+}

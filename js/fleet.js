@@ -41,7 +41,7 @@ function createCarGallery() {
                                  src="cars/images/small/${photoPath}">
                         </a>
                         <div class="p-4">
-                            <h5><a class="text-dark" href="#!">${name}</a></h5>
+                            <h5><a class="text-dark" href="formularz.html?car=${key}">${name}</a></h5>
                             <p class="small text-muted mb-0">${description}</p>
                             <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
                                 <p class="small mb-0">
