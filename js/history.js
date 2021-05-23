@@ -6,6 +6,12 @@ $(document).ready(async function () {
     await createRentHistory();
 });
 
+async function removeFromLocalStorage(index) {
+    const rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
+    rentedCars.splice(index, 1);
+    localStorage.setItem("rentedCars", JSON.stringify(rentedCars));
+}
+
 async function createRentHistory() {
     const carsData = await fetchCarsData();
     const rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
@@ -17,7 +23,8 @@ async function createRentHistory() {
     idToStringMap.set("theft-insurance", "kradzież");
     let card = "";
 
-    for (const rent of rentedCars) {
+    for (let i = 0; i < rentedCars.length; i++) {
+        const rent = rentedCars[i];
         let insurance = "";
         rent.insurance.forEach(el => insurance += `${idToStringMap.get(el)}, `);
         if (insurance === "")
@@ -79,43 +86,51 @@ async function createRentHistory() {
                         </li>
                     </ul>
                     
-                    <button class="btn btn-primary" data-target="#confirmationModal" data-toggle="modal" id="deleteBtn"
-                    type="button">Usuń</button>
+                    <button class="btn btn-primary deleteBtn" id="deleteBtn${i}" type="button">Usuń</button>
                     </div>
                     
                     
-                    <!-- The Modal -->
-                    <div class="modal fade" id="deleteModal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <!-- Modal Header -->
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Potwierdzenie</h4>
-                                    <button class="close" data-dismiss="modal" type="button">&times;</button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="modal-body" id="modal-body"></div>
-                                <!-- Modal footer -->
-                                <div class="modal-footer">
-                                    <button class="btn btn-danger" data-dismiss="modal" id="cancelBtn" type="button">
-                                    Anuluj
-                                    </button>
-                                    <button class="btn btn-success" data-dismiss="modal" id="confirmBtn" type="button">
-                                    Potwierdź
-                                    </button>
-                                </div>
-                
-                            </div>
-                        </div>
-                    </div>
-                    <!-- The Modal -->
+<!--                    &lt;!&ndash; The Modal &ndash;&gt;-->
+<!--                    <div class="modal fade" id="deleteModal">-->
+<!--                        <div class="modal-dialog">-->
+<!--                            <div class="modal-content">-->
+<!--                                &lt;!&ndash; Modal Header &ndash;&gt;-->
+<!--                                <div class="modal-header">-->
+<!--                                    <h4 class="modal-title">Potwierdzenie</h4>-->
+<!--                                    <button class="close" data-dismiss="modal" type="button">&times;</button>-->
+<!--                                </div>-->
+<!--                                &lt;!&ndash; Modal body &ndash;&gt;-->
+<!--                                <div class="modal-body" id="modal-body"></div>-->
+<!--                                &lt;!&ndash; Modal footer &ndash;&gt;-->
+<!--                                <div class="modal-footer">-->
+<!--                                    <button class="btn btn-danger" data-dismiss="modal" id="cancelBtn" type="button">-->
+<!--                                    Anuluj-->
+<!--                                    </button>-->
+<!--                                    <button class="btn btn-success" data-dismiss="modal" id="confirmBtn" type="button">-->
+<!--                                    Potwierdź-->
+<!--                                    </button>-->
+<!--                                </div>-->
+<!--                -->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    &lt;!&ndash; The Modal &ndash;&gt;-->
                     
                 </div>
             </div>
         </div>`;
     }
 
-    $("#rent-history-cards").html(card + card);
+    $("#rent-history-cards").html(card);
+    $(".deleteBtn").each(function (index, obj) {
+        console.log(index);
+        obj.addEventListener("click", async function () {
+            if (window.confirm("Czy na pewno chcesz usunąć?")) {
+                await removeFromLocalStorage(index);
+                await createRentHistory();
+            }
+        });
+    })
 }
 
 function insertSampleDataToLocalStorage() {
