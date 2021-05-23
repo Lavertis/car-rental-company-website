@@ -35,7 +35,7 @@ async function createRentHistory() {
 
         card += `<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
             <div class="bg-white rounded shadow-sm h-100">
-                <img alt="" class="img-fluid card-img-top" src="cars/images/small/${carsData[rent.carName][" photo-path"]}">
+                <img alt="" class="img-fluid card-img-top" src="cars/images/small/${carsData[rent.carName]["photo-path"]}">
                 <div class="p-4">
                     <h5>${carsData[rent.carName]["name"]}</h5>
                     <table class="table small mx-0 px-0">
