@@ -7,7 +7,7 @@ $(document).ready(async function () {
     await createRentHistory();
 });
 
-async function removeFromLocalStorage(index) {
+function removeFromLocalStorage(index) {
     const rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
     rentedCars.splice(index, 1);
     localStorage.setItem("rentedCars", JSON.stringify(rentedCars));
@@ -101,7 +101,7 @@ async function createRentHistory() {
         console.log(index);
         obj.addEventListener("click", async function () {
             if (window.confirm("Czy na pewno chcesz usunąć?")) {
-                await removeFromLocalStorage(index);
+                removeFromLocalStorage(index);
                 await createRentHistory();
             }
         });
