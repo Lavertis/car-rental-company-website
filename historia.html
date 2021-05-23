@@ -17,10 +17,13 @@
     <link href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet"/>
+    <!-- Custom JS -->
+    <script src="js/data.js" type="module"></script>
+    <script src="js/history.js" type="module"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- Navigation-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-violet">
     <div class="container">
         <span class="navbar-brand">Rentacar</span>
         <button aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
@@ -45,13 +48,12 @@
 </nav>
 <!-- Page Content-->
 <div class="container">
-
     <div class="container-fluid">
 
         <div class="px-lg-6">
             <!-- Baner -->
             <div class="row py-5">
-                <div class="col-lg-12 mx-auto">
+                <div class="col-xl-12 col-lg-11 mx-auto">
                     <div class="text-white p-5 shadow-sm rounded banner">
                         <h1 class="display-4">Historia wypożyczeń</h1>
                         <p class="lead">Tutaj sprawdzisz informacje dotyczące swoich ostatnich wypożyczeń.</p>
@@ -60,167 +62,13 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mb-4 mx-auto">
-                <div class="bg-white rounded shadow-sm">
-                    <img alt="${name}" class="img-fluid card-img-top" src="cars/images/small/Peugeot-308-2021.jpg">
-                    <div class="p-4">
-                        <h5>Peugeot 308</h5>
-                        <table class="table small">
-                            <tr>
-                                <td>Rozpoczęcie wynajmu</td>
-                                <td>01-05-2021</td>
-                            </tr>
-                            <tr>
-                                <td>Zakończenie wynajmu</td>
-                                <td>05-05-2021</td>
-                            </tr>
-                            <tr>
-                                <td>Odbiór pojazdu</td>
-                                <td>Osobisty</td>
-                            </tr>
-                            <tr>
-                                <td>Imię</td>
-                                <td>John</td>
-                            </tr>
-                            <tr>
-                                <td>Nazwisko</td>
-                                <td>Johnson</td>
-                            </tr>
-                            <tr>
-                                <td>Numer telefonu</td>
-                                <td>123-456-789</td>
-                            </tr>
-                            <tr>
-                                <td>Koszt</td>
-                                <td>600 PLN</td>
-                            </tr>
-                        </table>
-                        <ul class="list-inline">
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mb-4 mx-auto">
-                <div class="bg-white rounded shadow-sm">
-                    <img alt="${name}" class="img-fluid card-img-top" src="cars/images/small/Peugeot-308-2021.jpg">
-                    <div class="p-4">
-                        <h5>Peugeot 308</h5>
-                        <table class="table small">
-                            <tr>
-                                <td>Rozpoczęcie wynajmu</td>
-                                <td>01-05-2021</td>
-                            </tr>
-                            <tr>
-                                <td>Zakończenie wynajmu</td>
-                                <td>05-05-2021</td>
-                            </tr>
-                            <tr>
-                                <td>Odbiór pojazdu</td>
-                                <td>Osobisty</td>
-                            </tr>
-                            <tr>
-                                <td>Imię</td>
-                                <td>John</td>
-                            </tr>
-                            <tr>
-                                <td>Nazwisko</td>
-                                <td>Johnson</td>
-                            </tr>
-                            <tr>
-                                <td>Numer telefonu</td>
-                                <td>123-456-789</td>
-                            </tr>
-                            <tr>
-                                <td>Koszt</td>
-                                <td>600 PLN</td>
-                            </tr>
-                        </table>
-                        <ul class="list-inline">
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-4 col-lg-5 col-md-6 col-sm-10 mb-4 mx-auto">
-                <div class="bg-white rounded shadow-sm">
-                    <img alt="${name}" class="img-fluid card-img-top" src="cars/images/small/Peugeot-308-2021.jpg">
-                    <div class="p-4">
-                        <h5>Peugeot 308</h5>
-                        <table class="table small">
-                            <tr>
-                                <td>Rozpoczęcie wynajmu</td>
-                                <td>01-05-2021</td>
-                            </tr>
-                            <tr>
-                                <td>Zakończenie wynajmu</td>
-                                <td>05-05-2021</td>
-                            </tr>
-                            <tr>
-                                <td>Odbiór pojazdu</td>
-                                <td>Osobisty</td>
-                            </tr>
-                            <tr>
-                                <td>Imię</td>
-                                <td>John</td>
-                            </tr>
-                            <tr>
-                                <td>Nazwisko</td>
-                                <td>Johnson</td>
-                            </tr>
-                            <tr>
-                                <td>Numer telefonu</td>
-                                <td>123-456-789</td>
-                            </tr>
-                            <tr>
-                                <td>Koszt</td>
-                                <td>600 PLN</td>
-                            </tr>
-                        </table>
-                        <ul class="list-inline">
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
+        <div class="row" id="rent-history-cards">
 
         </div>
     </div>
-
 </div>
 <!-- Footer-->
-<footer class="py-3 bg-dark mt-auto">
+<footer class="py-3 bg-violet mt-auto">
     <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Rafał Kuźmiczuk 2021</p></div>
 </footer>
 </body>

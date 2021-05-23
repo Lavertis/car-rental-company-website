@@ -2,6 +2,10 @@ body {
     background: #f4f4f4;
 }
 
+.bg-violet {
+    background: #8e45ef !important;
+}
+
 .banner {
     background: #a770ef;
     background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
