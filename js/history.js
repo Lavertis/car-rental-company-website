@@ -35,13 +35,13 @@ async function createRentHistory() {
 
         card += `<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
             <div class="bg-white rounded shadow-sm h-100">
-                <img alt="" class="img-fluid card-img-top" src="cars/images/small/${carsData[rent.carName]["photo-path"]}">
+                <img alt="" class="img-fluid card-img-top" src="cars/images/small/${carsData[rent.carName][" photo-path"]}">
                 <div class="p-4">
                     <h5>${carsData[rent.carName]["name"]}</h5>
                     <table class="table small mx-0 px-0">
                         <tr>
                             <td class="px-1">Rozpoczęcie wynajmu</td>
-                            <td >${rent.startDate}</td>
+                            <td>${rent.startDate}</td>
                         </tr>
                         <tr>
                             <td class="px-1">Zakończenie wynajmu</td>
@@ -72,51 +72,25 @@ async function createRentHistory() {
                             <td>${rent.price} PLN</td>
                         </tr>
                     </table>
-                    
+
                     <div class="d-flex align-items-center justify-content-between mx-2 h-100">
-                    <ul class="list-inline my-auto">
-                        <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                        </li>
-                        <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                        </li>
-                        <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                        </li>
-                        <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                        </li>
-                        <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
-                        </li>
-                    </ul>
-                    
-                    <button class="btn btn-primary btn-warning text-white deleteBtn" id="deleteBtn${i}" type="button">Usuń</button>
+                        <ul class="list-inline my-auto">
+                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
+                            </li>
+                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
+                            </li>
+                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
+                            </li>
+                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
+                            </li>
+                            <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
+                            </li>
+                        </ul>
+                        <button class="btn btn-primary btn-warning text-white deleteBtn" id="deleteBtn${i}"
+                                type="button">Usuń
+                        </button>
                     </div>
-                    
-                    
-<!--                    &lt;!&ndash; The Modal &ndash;&gt;-->
-<!--                    <div class="modal fade" id="deleteModal">-->
-<!--                        <div class="modal-dialog">-->
-<!--                            <div class="modal-content">-->
-<!--                                &lt;!&ndash; Modal Header &ndash;&gt;-->
-<!--                                <div class="modal-header">-->
-<!--                                    <h4 class="modal-title">Potwierdzenie</h4>-->
-<!--                                    <button class="close" data-dismiss="modal" type="button">&times;</button>-->
-<!--                                </div>-->
-<!--                                &lt;!&ndash; Modal body &ndash;&gt;-->
-<!--                                <div class="modal-body" id="modal-body"></div>-->
-<!--                                &lt;!&ndash; Modal footer &ndash;&gt;-->
-<!--                                <div class="modal-footer">-->
-<!--                                    <button class="btn btn-danger" data-dismiss="modal" id="cancelBtn" type="button">-->
-<!--                                    Anuluj-->
-<!--                                    </button>-->
-<!--                                    <button class="btn btn-success" data-dismiss="modal" id="confirmBtn" type="button">-->
-<!--                                    Potwierdź-->
-<!--                                    </button>-->
-<!--                                </div>-->
-<!--                -->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    &lt;!&ndash; The Modal &ndash;&gt;-->
-                    
+
                 </div>
             </div>
         </div>`;
