@@ -6,7 +6,7 @@ body {
     background: #8e45ef !important;
 }
 
-.banner {
+.banner, .gradient {
     background: #a770ef;
     background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
     background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
@@ -44,14 +44,14 @@ body::-webkit-scrollbar {
 
 /* background of the scrollbar except button or resizer */
 body::-webkit-scrollbar-track {
-    background-color: #343a40;
+    background-color: #8e45ef;
 }
 
 /* scrollbar itself */
 body::-webkit-scrollbar-thumb {
-    background-color: #babac0;
+    background-color: #ffc107;
     border-radius: 16px;
-    border: 4px solid #343a40;
+    border: 4px solid #8e45ef;
 }
 
 /* set button(top and bottom of the scrollbar) */

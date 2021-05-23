@@ -86,7 +86,7 @@ async function createRentHistory() {
                         </li>
                     </ul>
                     
-                    <button class="btn btn-primary deleteBtn" id="deleteBtn${i}" type="button">Usuń</button>
+                    <button class="btn btn-primary btn-warning text-white deleteBtn" id="deleteBtn${i}" type="button">Usuń</button>
                     </div>
                     
                     
