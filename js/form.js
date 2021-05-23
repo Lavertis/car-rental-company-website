@@ -2,6 +2,7 @@ import {fetchCarsData} from './data.js';
 
 $(document).ready(async function () {
     let cars = await fetchCarsData();
+    document.cars = cars;
     initializeLocalStorage();
     initializeDataPickers();
     setSelectedCarFromUrlParam(cars);
@@ -83,7 +84,7 @@ function saveRentToLocalStorage() {
     let rent = {};
     let insurance = [];
     getCheckboxesChecked("insurance").forEach(el => insurance.push(el.val()));
-    rent.carKey = $("#car-model").val();
+    rent.carName = $("#car-model").val();
     rent.insurance = insurance;
     rent.pickup = getRadioChecked("pickup-type").val();
     rent.startDate = $("#date-start").val();
@@ -91,6 +92,7 @@ function saveRentToLocalStorage() {
     rent.name = $("#name").val();
     rent.surname = $("#surname").val();
     rent.phone = $("#phone").val();
+    rent.price = getFinalPrice(document.cars);
     rentedCars.push(rent);
     localStorage.setItem("rentedCars", JSON.stringify(rentedCars));
 }
@@ -135,8 +137,8 @@ function isFormValid() {
 }
 
 function isCarSelected() {
-    const carKey = $("#car-model").val();
-    if (carKey === null) {
+    const carName = $("#car-model").val();
+    if (carName === null) {
         $("#form-status").html("Wybierz samochód");
         return false;
     }
