@@ -3,6 +3,7 @@ import {fetchCarsData} from './data.js';
 $(document).ready(async function () {
     localStorage.setItem("rentedCars", JSON.stringify([]));
     insertSampleDataToLocalStorage();
+    insertSampleDataToLocalStorage();
     await createRentHistory();
 });
 
@@ -32,7 +33,7 @@ async function createRentHistory() {
         else
             insurance = insurance.slice(0, -2);
 
-        card += `<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 mb-4 mx-auto">
+        card += `<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 mb-4">
             <div class="bg-white rounded shadow-sm">
                 <img alt="" class="img-fluid card-img-top" src="cars/images/small/${carsData[rent.carName]["photo-path"]}">
                 <div class="p-4">
