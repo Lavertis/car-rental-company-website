@@ -33,8 +33,8 @@ async function createRentHistory() {
         else
             insurance = insurance.slice(0, -2);
 
-        card += `<div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 mb-4">
-            <div class="bg-white rounded shadow-sm">
+        card += `<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="bg-white rounded shadow-sm h-100">
                 <img alt="" class="img-fluid card-img-top" src="cars/images/small/${carsData[rent.carName]["photo-path"]}">
                 <div class="p-4">
                     <h5>${carsData[rent.carName]["name"]}</h5>
@@ -156,8 +156,8 @@ function insertSampleDataToLocalStorage() {
     rent1.pickup = "self-pickup";
     rent1.startDate = "2021-08-10";
     rent1.endDate = "2021-08-15";
-    rent1.name = "Katarzyna";
-    rent1.surname = "Kozłowska";
+    rent1.name = "Adam";
+    rent1.surname = "Kozłowski";
     rent1.phone = "999-999-999";
     rent1.price = 1200;
     rentedCars.push(rent1);
