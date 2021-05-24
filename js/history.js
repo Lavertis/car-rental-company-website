@@ -34,11 +34,11 @@ async function createRentHistory() {
             insurance = insurance.slice(0, -2);
 
         card += `<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
-            <div class="bg-white rounded shadow-sm h-100">
+            <div class="card h-100">
                 <img alt="" class="img-fluid card-img-top" src="cars/images/small/${carsData[rent.carName]["photo-path"]}">
-                <div class="p-4">
+                <div class="card-body">
                     <h5>${carsData[rent.carName]["name"]}</h5>
-                    <table class="table small mx-0 px-0">
+                    <table class="table card-text">
                         <tr>
                             <td class="px-1">Rozpoczęcie wynajmu</td>
                             <td>${rent.startDate}</td>
@@ -73,7 +73,9 @@ async function createRentHistory() {
                         </tr>
                     </table>
 
-                    <div class="d-flex align-items-center justify-content-between mx-2 h-100">
+                </div>
+                
+                <div class="card-footer d-flex justify-content-between mx-2 bg-white">
                         <ul class="list-inline my-auto">
                             <li class="list-inline-item m-0"><a href="#!"><i class="fa fa-star text-success"></i></a>
                             </li>
@@ -90,8 +92,6 @@ async function createRentHistory() {
                                 type="button">Usuń
                         </button>
                     </div>
-
-                </div>
             </div>
         </div>`;
     }
