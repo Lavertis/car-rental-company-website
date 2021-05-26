@@ -14,7 +14,7 @@ function addDeleteButtonsCallbacks(rentHistory) {
         obj.addEventListener("click", function () {
             if (window.confirm("Czy na pewno chcesz usunąć?")) {
                 rentHistory.removeFromLocalStorage(index);
-                rentHistory.fetchCarsData().then(null);
+                rentHistory.fetchCarsData();
             }
         });
     })
@@ -26,7 +26,7 @@ class RentHistory {
         this.rentedCars = this.#getRentedCarsFromLocalStorage();
         this.idToStringMap = new Map();
         this.#initializeIdToStringMap();
-        this.fetchCarsData().then(null);
+        this.fetchCarsData();
     }
 
     // noinspection JSMethodCanBeStatic
@@ -45,9 +45,8 @@ class RentHistory {
         this.idToStringMap.set("theft-insurance", "kradzież");
     }
 
-    async fetchCarsData() {
-        let cars = null;
-        await fetch("http://localhost:63342/pai-project/cars/data/cars.json")
+    fetchCarsData() {
+        fetch("http://localhost:63342/pai-project/cars/data/cars.json")
             .then(response => {
                 if (response.status !== 200)
                     return Promise.reject('Request failed');
@@ -58,7 +57,6 @@ class RentHistory {
                 this.createRentHistory();
             })
             .catch((error) => console.log(error));
-        return cars;
     }
 
     removeFromLocalStorage(index) {
@@ -102,9 +100,9 @@ class RentHistory {
             // <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
             // <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
 
-            card += "</a></ul>";
-            card += "<button class='btn btn-primary btn-warning text-white deleteBtn' id='deleteBtn${i}'>Usuń</button>";
-            card += "</div></div></div>";
+            card += `</a></ul>`;
+            card += `<button class="btn btn-primary btn-warning text-white deleteBtn" id="deleteBtn${i}">Usuń</button>`;
+            card += `</div></div></div>`;
         }
 
         $("#rent-history-cards").html(card);

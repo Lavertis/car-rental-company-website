@@ -8,7 +8,7 @@ class CarFleetGallery {
         this.carsData = [];
         this.typeToColorMap = new Map();
         this.#initializeTypeToColorMap();
-        this.#fetchCarsData().then(null);
+        this.#fetchCarsData();
     }
 
     #initializeTypeToColorMap() {
@@ -20,8 +20,8 @@ class CarFleetGallery {
         this.typeToColorMap.set("Małe", "badge-info");
     }
 
-    async #fetchCarsData() {
-        await fetch("http://localhost:63342/pai-project/cars/data/cars.json")
+    #fetchCarsData() {
+        fetch("http://localhost:63342/pai-project/cars/data/cars.json")
             .then(response => {
                 if (response.status !== 200)
                     return Promise.reject('Request failed');
