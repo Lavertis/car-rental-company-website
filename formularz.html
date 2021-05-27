@@ -16,8 +16,7 @@
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet"/>
     <!-- Custom JS -->
-    <script src="js/data.js" type="module"></script>
-    <script src="js/form.js" type="module"></script>
+    <script src="js/form.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- Navigation-->
@@ -136,12 +135,11 @@
             </form>
         </div>
         <div class="col-md-6">
-            <img alt="selected car" class="img-fluid car-photo-form mb-3" hidden id="car-photo" src="">
+            <img alt="selected car" class="img-fluid car-photo-form mb-3 w-100" hidden id="car-photo" src="">
         </div>
         <span class="form-status w-100 text-center" id="form-status">&nbsp</span>
-        <button class="btn btn-lg btn-primary btn-warning text-white mx-auto mt-3 mb-5" data-target="#confirmationModal"
-                data-toggle="modal"
-                id="rentBtn" type="button">Wypożycz
+        <button class="btn btn-lg btn-primary btn-warning text-white mx-auto mt-3 mb-5 col-11 col-md-2"
+                data-target="#confirmationModal" data-toggle="modal" id="rentBtn" type="button">Wypożycz
         </button>
     </div>
 
