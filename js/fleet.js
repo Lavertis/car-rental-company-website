@@ -1,4 +1,4 @@
-$(document).ready(async function () {
+$(document).ready(function () {
     new CarFleetGallery();
 });
 
