@@ -6,11 +6,11 @@ class CarFleetGallery {
     constructor() {
         this.carsData = [];
         this.typeToColorMap = new Map();
-        this.#initializeTypeToColorMap();
-        this.#fetchCarsData();
+        this.initializeTypeToColorMap();
+        this.fetchCarsData();
     }
 
-    #initializeTypeToColorMap() {
+    initializeTypeToColorMap() {
         this.typeToColorMap.set("Luksusowe", "badge-dark");
         this.typeToColorMap.set("Tanie", "badge-primary");
         this.typeToColorMap.set("Rodzinne", "badge-warning text-white");
@@ -19,7 +19,7 @@ class CarFleetGallery {
         this.typeToColorMap.set("Małe", "badge-info");
     }
 
-    #fetchCarsData() {
+    fetchCarsData() {
         fetch("http://localhost:63342/pai-project/cars/data/cars.json")
             .then(response => {
                 if (response.status !== 200)

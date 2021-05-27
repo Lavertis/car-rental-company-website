@@ -25,17 +25,17 @@ class RentHistory {
         this.carsData = [];
         this.rentedCars = [];
         this.idToStringMap = new Map();
-        this.#initializeRentedCars();
-        this.#initializeIdToStringMap();
+        this.initializeRentedCars();
+        this.initializeIdToStringMap();
         this.fetchCarsData();
     }
 
-    #initializeRentedCars() {
+    initializeRentedCars() {
         if (localStorage.hasOwnProperty("rentedCars"))
             this.rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
     }
 
-    #initializeIdToStringMap() {
+    initializeIdToStringMap() {
         this.idToStringMap.set("address-delivery-pickup", "Dostawa pod adres");
         this.idToStringMap.set("self-pickup", "Osobisty");
         this.idToStringMap.set("tyres-insurance", "opony");
@@ -85,7 +85,7 @@ class RentHistory {
             card += `<tr><td>Odbiór pojazdu</td><td>${this.idToStringMap.get(rent.pickup)}</td></tr>`;
             card += `<tr><td>Imię</td><td>${rent.name}</td></tr>`;
             card += `<tr><td>Nazwisko</td><td>${rent.surname}</td></tr>`;
-            card += `<tr><td>Numer telefonu</td><td>${rent.phone}</td></tr>`;
+            card += `<tr><td>Numer telefonu</td><td>${rent.phone.replace(/(\d{3})(\d{3})(\d{3})/, "$1-$2-$3")}</td></tr>`;
             card += `<tr><td>Koszt</td><td>${rent.price} PLN</td></tr>`;
             card += `</table>`;
             card += `</div>`;
