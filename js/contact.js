@@ -1,49 +1,103 @@
-function validateForm() {
-    const name = document.getElementById('name').value;
-    if (name === "") {
-        document.getElementById('form-status').innerHTML = "Pole z imieniem nie może być puste";
-        return false;
+$(document).ready(function () {
+    const contactForm = new ContactForm();
+
+    $("#btnSubmit").click(function (e) {
+        contactForm.getValuesFromInputFields();
+        const isFormValid = contactForm.validateForm();
+        if (isFormValid)
+            return contactForm.sendForm();
+    });
+});
+
+class ContactForm {
+    constructor() {
+        this.formStatus = $('#form-status');
+        this.validator = new Validator();
+        this.name = "";
+        this.email = "";
+        this.subject = "";
+        this.message = "";
     }
 
-    const email = document.getElementById('email').value;
-    if (email === "") {
-        document.getElementById('form-status').innerHTML = "Pole z e-mailem nie może być puste";
-        return false;
-    } else {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!re.test(email)) {
-            document.getElementById('form-status').innerHTML = "Niepoprawny e-mail";
+    getValuesFromInputFields() {
+        this.name = $('#name').val();
+        this.email = $('#email').val();
+        this.subject = $('#subject').val();
+        this.message = $('#message').val();
+    }
+
+    validateForm() {
+        if (this.validator.isNameCorrect(this.name) === Validator.Status.EMPTY) {
+            this.formStatus.html("Pole z imieniem nie może być puste");
             return false;
         }
+        const isEmailCorrect = this.validator.isEmailCorrect(this.email);
+        if (isEmailCorrect === Validator.Status.EMPTY) {
+            this.formStatus.html("Pole z e-mailem nie może być puste");
+            return false;
+        } else if (isEmailCorrect === Validator.Status.REGEX_MISMATCH) {
+            this.formStatus.html("Niepoprawny e-mail");
+            return false;
+        }
+        if (this.validator.isSubjectCorrect(this.subject) === Validator.Status.EMPTY) {
+            this.formStatus.html("Pole z tematem nie może być puste");
+            return false;
+        }
+        if (this.validator.isMessageCorrect(this.message) === Validator.Status.EMPTY) {
+            this.formStatus.html("Pole z wiadomością nie może być puste");
+            return false;
+        }
+        this.formStatus.html("");
+        return true;
     }
 
-    const subject = document.getElementById('subject').value;
-    if (subject === "") {
-        document.getElementById('form-status').innerHTML = "Pole z tematem nie może być puste";
+    sendForm() {
+        const send = window.confirm("Czy na pewno chcesz wysłać wiadomość?");
+        if (send) {
+            const subject = $('#subject').val();
+            const message = $('#message').val();
+            window.location.href = `mailto:rafal.kuzmiczuk@pollub.edu.pl?subject=${subject}&body=${message}`;
+            $('form-control').val("");
+            return true
+        }
         return false;
     }
-
-    const message = document.getElementById('message').value;
-    if (message === "") {
-        document.getElementById('form-status').innerHTML = "Pole z wiadomością nie może być puste";
-        return false;
-    }
-
-    document.getElementById('form-status').innerHTML = "";
-    return true;
 }
 
-function sendForm() {
-    const correct = validateForm();
-    if (!correct)
-        return false;
-
-    const send = window.confirm("Czy na pewno chcesz wysłać wiadomość?");
-    if (send) {
-        const subject = document.getElementById('subject').value;
-        const message = document.getElementById('message').value;
-        window.location.href = `mailto:rafal.kuzmiczuk@pollub.edu.pl?subject=${subject}&body=${message}`;
-        return true
+class Validator {
+    static Status = {
+        VALID: 1,
+        EMPTY: 2,
+        REGEX_MISMATCH: 3
     }
-    return false;
+
+    constructor() {
+        this.emailRegex = new RegExp(`^(([^<>()\\[\\]\\\\.,;:\\s@"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@"]+)*)|(".+"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$`);
+    }
+
+    isEmpty(text) {
+        if (text === "")
+            return Validator.Status.EMPTY;
+        return Validator.Status.VALID;
+    }
+
+    isNameCorrect(name) {
+        return this.isEmpty(name);
+    }
+
+    isEmailCorrect(email) {
+        if (this.isEmpty(email) === Validator.Status.EMPTY)
+            return Validator.Status.EMPTY;
+        if (!this.emailRegex.test(email))
+            return Validator.Status.REGEX_MISMATCH;
+        return Validator.Status.VALID;
+    }
+
+    isSubjectCorrect(subject) {
+        return this.isEmpty(subject);
+    }
+
+    isMessageCorrect(message) {
+        return this.isEmpty(message);
+    }
 }
