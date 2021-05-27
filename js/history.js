@@ -90,22 +90,35 @@ class RentHistory {
             card += `</table>`;
             card += `</div>`;
             card += `<div class="card-footer d-flex justify-content-between mx-2 bg-white">`;
-            card += `<a class="text-decoration-none my-auto" href="#!"><ul class="list-inline my-auto">`;
+            card += `<ul class="list-inline my-auto">`;
 
-            // <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-            // <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-            // <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-            // <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-            // <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
+            for (let j = 0; j < rent.stars; j++)
+                card += `<li class="list-inline-item m-0"><i class="fa fa-star text-razzmatazz" style="cursor: pointer;"></i></li>`;
+            for (let j = rent.stars; j < 5; j++)
+                card += `<li class="list-inline-item m-0"><i class="fa fa-star text-dark" style="cursor: pointer;"></i></li>`;
 
-            card += `</a></ul>`;
-            card += `<button class="btn btn-primary btn-warning text-white deleteBtn" id="deleteBtn${i}">Usuń</button>`;
+            card += `</ul>`;
+            card += `<button class="btn btn-primary btn-warning text-white deleteBtn">Usuń</button>`;
             card += `</div></div></div>`;
         }
 
         $("#rent-history-cards").html(card);
         addDeleteButtonsCallbacks(this);
+        addChangeStarRatingButtonsCallbacks(this);
     }
+
+    changeStarRating(itemId, stars) {
+        this.rentedCars[itemId].stars = stars;
+        localStorage.setItem("rentedCars", JSON.stringify(this.rentedCars));
+        this.createRentHistory();
+    }
+}
+
+function addChangeStarRatingButtonsCallbacks(rentHistory) {
+    const stars = $(".list-inline-item");
+    stars.each(function (index) {
+        $(this).on("click", () => rentHistory.changeStarRating(Math.floor(index / 5), index % 5 + 1))
+    })
 }
 
 function insertSampleDataToLocalStorage() {
@@ -113,12 +126,12 @@ function insertSampleDataToLocalStorage() {
     let rent1 = {
         "carName": "peugeot-308", "insurance": ["tyres-insurance", "windows-insurance", "theft-insurance"],
         "pickup": "address-delivery-pickup", "startDate": "2021-08-10", "endDate": "2021-08-15", "name": "John",
-        "surname": "Johnson", "phone": "123-456-789", "price": 600
+        "surname": "Johnson", "phone": "123-456-789", "price": 600, "stars": 0
     };
     let rent2 = {
         "carName": "ford-focus", "insurance": ["windows-insurance"], "pickup": "self-pickup",
         "startDate": "2021-08-10", "endDate": "2021-08-15", "name": "Katarzyna", "surname": "Kozłowska",
-        "phone": "999-999-999", "price": 1200
+        "phone": "999-999-999", "price": 1200, "stars": 0
     };
     rentedCars.push(rent1);
     rentedCars.push(rent2);

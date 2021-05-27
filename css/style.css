@@ -29,6 +29,10 @@ body {
     color: red;
 }
 
+.text-razzmatazz {
+    color: #ff006e !important;
+}
+
 #message {
     min-height: 150px;
 }

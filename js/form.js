@@ -62,6 +62,7 @@ class RentItem {
         this.surname = "";
         this.phone = "";
         this.price = 0;
+        this.stars = 0;
     }
 }
 
