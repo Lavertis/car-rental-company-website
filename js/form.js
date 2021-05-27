@@ -51,6 +51,20 @@ function addCallbacksToButtons(rentForm) {
     });
 }
 
+class RentItem {
+    constructor() {
+        this.carName = "";
+        this.insurance = [];
+        this.pickup = ";"
+        this.startDate = "";
+        this.endDate = "";
+        this.name = "";
+        this.surname = "";
+        this.phone = "";
+        this.price = 0;
+    }
+}
+
 class RentForm {
     constructor() {
         this.carsData = [];
@@ -58,14 +72,7 @@ class RentForm {
         this.validator = new Validator();
         this.form = $("#rent-form");
         this.formStatus = $("#form-status");
-        this.carSelected = "";
-        this.insurance = [];
-        this.pickupType = ";"
-        this.startDate = "";
-        this.endDate = "";
-        this.name = "";
-        this.surname = "";
-        this.phone = "";
+        this.rentItem = new RentItem();
         this.fetchCarsData();
         this.initializeExtraFeeMap();
     }
@@ -93,14 +100,14 @@ class RentForm {
     }
 
     getValuesFromInputFields() {
-        this.carSelected = $(`#car-model`).val();
-        this.insurance = this.getCheckedCheckboxesValues("insurance");
-        this.pickupType = this.getCheckedRadioValue("pickup-type");
-        this.startDate = $("#date-start").val();
-        this.endDate = $("#date-end").val();
-        this.name = $("#name").val();
-        this.surname = $("#surname").val();
-        this.phone = $("#phone").val();
+        this.rentItem.carName = $(`#car-model`).val();
+        this.rentItem.insurance = this.getCheckedCheckboxesValues("insurance");
+        this.rentItem.pickup = this.getCheckedRadioValue("pickup-type");
+        this.rentItem.startDate = $("#date-start").val();
+        this.rentItem.endDate = $("#date-end").val();
+        this.rentItem.name = $("#name").val();
+        this.rentItem.surname = $("#surname").val();
+        this.rentItem.phone = $("#phone").val();
     }
 
     setSelectedCarFromUrlParam() {
@@ -108,7 +115,7 @@ class RentForm {
         const carModelSelect = $("#car-model");
         if (carFromUrl) {
             carModelSelect.val(carFromUrl);
-            this.carSelected = carFromUrl;
+            this.rentItem.carName = carFromUrl;
             this.showSelectedCarPhoto();
             this.showCarPrice();
         }
@@ -133,69 +140,58 @@ class RentForm {
 
     getFinalPrice() {
         let extraFees = 0;
-        this.insurance.forEach(value => extraFees += this.extraFeeMap.get(value));
-        extraFees += this.extraFeeMap.get(this.pickupType);
-        const differenceInDays = DateEx.getDifferenceInDays(this.startDate, this.endDate);
-        const carDailyPrice = this.carsData[this.carSelected]["price"];
-        return differenceInDays * carDailyPrice + extraFees;
+        this.rentItem.insurance.forEach(value => extraFees += this.extraFeeMap.get(value));
+        extraFees += this.extraFeeMap.get(this.rentItem.pickup);
+        const differenceInDays = DateEx.getDifferenceInDays(this.rentItem.startDate, this.rentItem.endDate);
+        const carDailyPrice = this.carsData[this.carName]["price"];
+        this.rentItem.price = differenceInDays * carDailyPrice + extraFees;
+        return this.rentItem.price;
     }
 
     saveRentToLocalStorage() {
         let rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
-        let rent = {};
-        let insurance = [];
-        this.getCheckedCheckboxesValues("insurance").forEach(value => insurance.push(value));
-        rent.carName = $("#car-model").val();
-        rent.insurance = insurance;
-        rent.pickup = this.getCheckedRadioValue("pickup-type");
-        rent.startDate = $("#date-start").val();
-        rent.endDate = $("#date-end").val();
-        rent.name = $("#name").val();
-        rent.surname = $("#surname").val();
-        rent.phone = $("#phone").val();
-        rent.price = this.getFinalPrice();
-        rentedCars.push(rent);
+        rentedCars.push(this.rentItem);
         localStorage.setItem("rentedCars", JSON.stringify(rentedCars));
     }
 
     showSelectedCarPhoto() {
-        this.carSelected = $(`#car-model`).val();
-        const photoPath = this.carsData[this.carSelected]["photo-path"];
+        this.carName = $(`#car-model`).val();
+        const photoPath = this.carsData[this.carName]["photo-path"];
         const finalPath = `cars/images/small/${photoPath}`;
         $("#car-photo").removeAttr("hidden").prop('src', finalPath);
     }
 
     showCarPrice() {
-        const price = this.carsData[this.carSelected]["price"];
+        const price = this.carsData[this.carName]["price"];
         $("#price").html(`${price} PLN`);
     }
 
     isFormValid() {
-        const isCarSelected = this.validator.isOptionSelected(this.carSelected);
+        const isCarSelected = this.validator.isOptionSelected(this.carName);
         if (isCarSelected === Validator.Status.NOT_SELECTED) {
             $("#form-status").html("Wybierz samochód");
             return false;
         }
 
-        const isPickupTypeSelected = this.validator.isAnyRadioChecked("pickup-type");
-        if (isPickupTypeSelected === Validator.Status.CHECKED_NONE) {
+        const isPickupSelected = this.validator.isAnyRadioChecked("pickup-type");
+        if (isPickupSelected === Validator.Status.CHECKED_NONE) {
             this.formStatus.html("Wybierz sposób odbioru pojazdu");
             return false;
         }
 
-        const startDateStatus = this.validator.isDateCorrect(this.startDate);
+        const startDateStatus = this.validator.isDateCorrect(this.rentItem.startDate);
         if (startDateStatus === Validator.Status.EMPTY) {
             this.formStatus.html("Wybierz datę rozpoczęcia wynajmu");
             return false;
         }
 
-        const endDateStatus = this.validator.isDateCorrect(this.endDate);
+        const endDateStatus = this.validator.isDateCorrect(this.rentItem.endDate);
         if (endDateStatus === Validator.Status.EMPTY) {
             this.formStatus.html("Wybierz datę zakończenia wynajmu");
             return false;
         }
 
-        const nameStatus = this.validator.isNameCorrect(this.name);
+        const nameStatus = this.validator.isNameCorrect(this.rentItem.name);
         switch (nameStatus) {
             case Validator.Status.EMPTY:
                 this.formStatus.html("Pole z imieniem nie może być puste");
@@ -205,7 +201,7 @@ class RentForm {
                 return false;
         }
 
-        const surnameStatus = this.validator.isSurnameCorrect(this.surname);
+        const surnameStatus = this.validator.isSurnameCorrect(this.rentItem.surname);
         switch (surnameStatus) {
             case Validator.Status.EMPTY:
                 this.formStatus.html("Pole z nazwiskiem nie może być puste");
@@ -215,7 +211,7 @@ class RentForm {
                 return false;
         }
 
-        const phoneStatus = this.validator.isPhoneCorrect(this.phone);
+        const phoneStatus = this.validator.isPhoneCorrect(this.rentItem.phone);
         switch (phoneStatus) {
             case Validator.Status.EMPTY:
                 this.formStatus.html("Pole z numerem telefonu nie może być puste");
