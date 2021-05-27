@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const contactForm = new ContactForm();
 
-    $("#btnSubmit").click(function (e) {
+    $("#btnSubmit").click(function () {
         contactForm.getValuesFromInputFields();
         const isFormValid = contactForm.validateForm();
         if (isFormValid)
