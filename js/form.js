@@ -12,8 +12,8 @@ function initializeLocalStorage() {
 
 function initializeDataPickers() {
     const minDate = DateEx.getTodayDateAsStr(1);
-    $("#date-start").prop("min", minDate);
-    $("#date-end").prop("min", minDate);
+    $("#date-start").prop("min", minDate).removeAttr("max");
+    $("#date-end").prop("min", minDate).removeAttr("max");
 }
 
 function addCallbacksToButtons(rentForm) {
@@ -24,6 +24,7 @@ function addCallbacksToButtons(rentForm) {
     $("#car-model").change(function () {
         rentForm.showSelectedCarPhoto();
         rentForm.showCarPrice();
+        $("#car-photo").show();
     });
 
     $("#date-start").change(function () {
@@ -46,6 +47,7 @@ function addCallbacksToButtons(rentForm) {
 
     $("#confirmBtn").click(function () {
         rentForm.saveRentToLocalStorage();
+        rentForm.resetForm();
     });
 }
 
@@ -54,6 +56,7 @@ class RentForm {
         this.carsData = [];
         this.extraFeeMap = new Map();
         this.validator = new Validator();
+        this.form = $("#rent-form");
         this.formStatus = $("#form-status");
         this.carSelected = "";
         this.insurance = [];
@@ -115,6 +118,13 @@ class RentForm {
         const queryString = window.location.search;
         const urlParams = new URLSearchParams(queryString);
         return urlParams.get(param);
+    }
+
+    resetForm() {
+        this.form.trigger("reset");
+        $("#price").html("");
+        $("#car-photo").hide();
+        initializeDataPickers();
     }
 
     clearFormStatus() {
