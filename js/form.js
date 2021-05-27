@@ -118,7 +118,7 @@ class RentForm {
     }
 
     clearFormStatus() {
-        $("#form-status").html("&nbsp");
+        $("#form-status").html("&nbsp;");
     }
 
     getFinalPrice() {
