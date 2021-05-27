@@ -2,7 +2,6 @@ $(document).ready(async function () {
     new CarFleetGallery();
 });
 
-// noinspection DuplicatedCode
 class CarFleetGallery {
     constructor() {
         this.carsData = [];
@@ -37,7 +36,6 @@ class CarFleetGallery {
             .catch((error) => console.log(error));
     }
 
-    // noinspection JSMethodCanBeStatic
     createCarFleetGallery() {
         let data = "";
         for (const key of Object.keys(this.carsData)) {

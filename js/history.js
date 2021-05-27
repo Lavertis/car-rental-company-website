@@ -23,18 +23,16 @@ function addDeleteButtonsCallbacks(rentHistory) {
 class RentHistory {
     constructor() {
         this.carsData = [];
-        this.rentedCars = this.#getRentedCarsFromLocalStorage();
+        this.rentedCars = [];
         this.idToStringMap = new Map();
+        this.#initializeRentedCars();
         this.#initializeIdToStringMap();
         this.fetchCarsData();
     }
 
-    // noinspection JSMethodCanBeStatic
-    #getRentedCarsFromLocalStorage() {
+    #initializeRentedCars() {
         if (localStorage.hasOwnProperty("rentedCars"))
-            return JSON.parse(localStorage.getItem("rentedCars"));
-        else
-            return [];
+            this.rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
     }
 
     #initializeIdToStringMap() {

@@ -202,7 +202,6 @@ function isSurnameCorrect() {
     return true;
 }
 
-
 function isPhoneCorrect() {
     const phone = $("#phone").val();
     const regex = new RegExp("^[1-9][0-9]{8}$");
