@@ -168,14 +168,14 @@ class RentForm {
     }
 
     isFormValid() {
-        const isCarSelected = this.validator.isOptionSelected(this.carName);
-        if (isCarSelected === Validator.Status.NOT_SELECTED) {
+        const carSelectedStatus = this.validator.isOptionSelected(this.carName);
+        if (carSelectedStatus === Validator.Status.NOT_SELECTED) {
             $("#form-status").html("Wybierz samochód");
             return false;
         }
 
-        const isPickupSelected = this.validator.isAnyRadioChecked("pickup-type");
-        if (isPickupSelected === Validator.Status.CHECKED_NONE) {
+        const pickupStatus = this.validator.isAnyRadioChecked("pickup-type");
+        if (pickupStatus === Validator.Status.CHECKED_NONE) {
             this.formStatus.html("Wybierz sposób odbioru pojazdu");
             return false;
         }
@@ -262,7 +262,8 @@ class Validator {
     }
 
     isOptionSelected(selectedValue) {
-        if (selectedValue === null)
+        console.log(selectedValue);
+        if (selectedValue === undefined)
             return Validator.Status.NOT_SELECTED;
         return Validator.Status.SELECTED;
     }
