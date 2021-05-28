@@ -55,7 +55,7 @@ class RentItem {
     constructor() {
         this.carName = "";
         this.insurance = [];
-        this.pickup = ";"
+        this.pickup = ""
         this.startDate = "";
         this.endDate = "";
         this.name = "";
