@@ -15,6 +15,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom CSS -->
     <link href="css/style.css" rel="stylesheet"/>
+    <!-- Custom JS -->
+    <script src="js/index.js"></script>
 </head>
 <body class="d-flex flex-column min-vh-100">
 <!-- Navigation-->
@@ -99,9 +101,7 @@
         </div>
         <div class="col-lg-5 mt-4 mt-lg-0">
             <h1 class="font-weight-light">Wypożyczalnia Rentacar</h1>
-            <p>Jesteśmy firmą specjalizującą się w wypożyczaniu samochodów osobowych. Mamy do zaoferowania szeroką
-                ofertę aut nowych i starych o zróżnicowanym cenniku. Każdy znajdzie coś dla siebie.
-            </p>
+            <p id="info"></p>
             <a class="btn btn-primary btn-warning text-white" href="formularz.html">Chcę wypożyczyć</a>
         </div>
     </div>
@@ -119,11 +119,7 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h2 class="card-title">Newsy ze świata motoryzacji</h2>
-                    <p class="card-text">
-                        Jakie nowości wprowadzają na rynek producenci? Które auta zaskoczą pod względem wizualnym
-                        i technicznym? I jakie zmiany szykują się w przepisach drogowych? Sprawdź najświeższe informacje
-                        ze świata motoryzacji.
-                    </p>
+                    <p class="card-text" id="news"></p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary btn-sm btn-warning text-white" href="https://www.autocentrum.pl/newsy/">
@@ -135,9 +131,7 @@
             <div class="card h-100">
                 <div class="card-body">
                     <h2 class="card-title">Historia motoryzacji</h2>
-                    <p class="card-text">
-                        Historia motoryzacji to także pierwsza na świecie opona, pierwszy klakson i pierwsza autostrada.
-                        Cofnijmy się więc w czasie i sprawdźmy, kiedy powstały.</p>
+                    <p class="card-text" id="history"></p>
                 </div>
                 <div class="card-footer">
                     <a class="btn btn-primary btn-sm btn-warning text-white"
