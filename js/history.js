@@ -126,15 +126,13 @@ function insertSampleDataToLocalStorage() {
     let rent1 = {
         "carName": "peugeot-308", "insurance": ["tyres-insurance", "windows-insurance", "theft-insurance"],
         "pickup": "address-delivery-pickup", "startDate": "2021-08-10", "endDate": "2021-08-15", "name": "John",
-        "surname": "Johnson", "phone": "123-456-789", "price": 600, "stars": 0
+        "surname": "Johnson", "phone": "365985412", "price": 1200, "stars": 0
     };
     let rent2 = {
-        "carName": "ford-focus", "insurance": ["windows-insurance"], "pickup": "self-pickup",
-        "startDate": "2021-08-10", "endDate": "2021-08-15", "name": "Katarzyna", "surname": "Kozłowska",
-        "phone": "999-999-999", "price": 1200, "stars": 0
+        "carName": "ford-focus", "insurance": [], "pickup": "self-pickup",
+        "startDate": "2021-06-12", "endDate": "2021-06-14", "name": "Salome", "surname": "Simoes",
+        "phone": "586321458", "price": 600, "stars": 0
     };
-    rentedCars.push(rent1);
-    rentedCars.push(rent2);
     rentedCars.push(rent1);
     rentedCars.push(rent2);
     localStorage.setItem("rentedCars", JSON.stringify(rentedCars));
