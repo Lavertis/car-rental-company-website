@@ -151,7 +151,7 @@ class RentForm {
 
     saveRentToLocalStorage() {
         let rentedCars = JSON.parse(localStorage.getItem("rentedCars"));
-        rentedCars.push(this.rentItem);
+        rentedCars.unshift(this.rentItem);
         localStorage.setItem("rentedCars", JSON.stringify(rentedCars));
     }
 
