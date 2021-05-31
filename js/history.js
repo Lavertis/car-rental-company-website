@@ -2,7 +2,7 @@ $(document).ready(function () {
     // Only for debug
     if (!localStorage.hasOwnProperty("rentedCars"))
         insertSampleDataToLocalStorage();
-    else if (localStorage.getItem("rentedCars").length < 3)
+    else if (JSON.parse(localStorage.getItem("rentedCars")).length < 2)
         insertSampleDataToLocalStorage();
     // End only for debug
 
