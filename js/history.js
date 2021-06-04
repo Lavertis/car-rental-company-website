@@ -79,8 +79,8 @@ class RentHistory {
             card += `<div class="card-body">`;
             card += `<h5>${this.carsData[rent.carName]["name"]}</h5>`;
             card += `<table class="table card-text">`;
-            card += `<tr><td>Rozpoczęcie wynajmu</td><td>${rent.startDate}</td></tr>`;
-            card += `<tr><td>Zakończenie wynajmu</td><td>${rent.endDate}</td></tr>`;
+            card += `<tr><td>Rozpoczęcie wynajmu</td><td style="white-space: nowrap">${rent.startDate}</td></tr>`;
+            card += `<tr><td>Zakończenie wynajmu</td><td style="white-space: nowrap">${rent.endDate}</td></tr>`;
             card += `<tr><td>Dodatkowe ubezpieczenie</td><td>${insurance}</td></tr>`;
             card += `<tr><td>Odbiór pojazdu</td><td>${this.idToStringMap.get(rent.pickup)}</td></tr>`;
             card += `<tr><td>Imię</td><td>${rent.name}</td></tr>`;
