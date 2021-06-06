@@ -85,7 +85,7 @@ class RentHistory {
             card += `<tr><td>Odbiór pojazdu</td><td>${this.idToStringMap.get(rent.pickup)}</td></tr>`;
             card += `<tr><td>Imię</td><td>${rent.name}</td></tr>`;
             card += `<tr><td>Nazwisko</td><td>${rent.surname}</td></tr>`;
-            card += `<tr><td>Numer telefonu</td><td>${rent.phone.replace(/(\d{3})(\d{3})(\d{3})/, "$1-$2-$3")}</td></tr>`;
+            card += `<tr><td>Numer telefonu</td><td style="white-space: nowrap">${rent.phone.replace(/(\d{3})(\d{3})(\d{3})/, "$1-$2-$3")}</td></tr>`;
             card += `<tr><td>Koszt</td><td>${rent.price} PLN</td></tr>`;
             card += `</table>`;
             card += `</div>`;
