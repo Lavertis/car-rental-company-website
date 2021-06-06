@@ -11,6 +11,7 @@ $(document).ready(function () {
 
 class ContactForm {
     constructor() {
+        this.form = $('#contact-form');
         this.formStatus = $('#form-status');
         this.validator = new Validator();
         this.name = "";
@@ -57,6 +58,7 @@ class ContactForm {
             const subject = $('#subject').val();
             const message = $('#message').val();
             window.location.href = `mailto:rafal.kuzmiczuk@pollub.edu.pl?subject=${subject}&body=${message}`;
+            this.form.trigger('reset');
             $('form-control').val("");
             return true
         }
