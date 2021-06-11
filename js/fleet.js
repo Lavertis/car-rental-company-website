@@ -20,7 +20,7 @@ class CarFleetGallery {
     }
 
     fetchCarsData() {
-        fetch("http://localhost:63342/pai-project/cars/data/cars.json")
+        fetch("cars/data/cars.json")
             .then(response => {
                 if (response.status !== 200)
                     return Promise.reject('Request failed');

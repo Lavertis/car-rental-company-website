@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    fetch("http://localhost:63342/pai-project/data/index.json")
+    fetch("data/index.json")
         .then(response => {
             if (response.status !== 200)
                 return Promise.reject('Request failed');
